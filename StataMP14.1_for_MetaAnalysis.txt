@@ -1,0 +1,17 @@
+*Binary fixed, Mantel-Haenszel Pooling Model for RR
+
+metan a b c d, label (namevar=authors, yearvar=year) random rr
+gen logrr=log(_ES)
+rename _selogES selogrr
+metafunnel logrr selogrr, xtitle (Log Risk Ratio) ytitle (Standard Error of LogRR)
+metabias logrr selogrr, egger graph
+metabias logrr selogrr, begg
+metatrim logrr selogrr, funnel
+
+*Continuous random (I-V heterogeneity) Pooling Model for Cohen
+
+metan n1 mean1 sd1 n2 mean2 sd2, label (namevar=authors, yearvar=year) random cohen
+metafunnel _ES _seES
+metabias _ES _seES, egger graph
+metabias _ES _seES, begg
+metatrim _ES _seES, funnel
