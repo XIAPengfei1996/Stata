@@ -1,0 +1,4 @@
+cd /Users/xiapengfei/Desktop/D
+unicode analyze *
+unicode encoding set gb18030
+unicode translate  *
